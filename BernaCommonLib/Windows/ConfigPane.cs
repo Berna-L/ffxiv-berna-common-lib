@@ -3,9 +3,13 @@ using KamiLib.Interfaces;
 
 namespace BernaCommonLib.Windows;
 
-public abstract class ConfigPane<T>: ISelectable, IDrawable where T: BaseConfiguration
+public interface ConfigPane: ISelectable, IDrawable {
+
+}
+
+public abstract class ConfigPane<T>: ConfigPane
 {
-    internal readonly T configuration;
+    protected readonly T configuration;
 
     public IDrawable Contents => this;
     public string ID => $"##{GetType()}";
